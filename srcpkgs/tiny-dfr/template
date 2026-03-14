@@ -1,6 +1,6 @@
-# Template file for 'tiny-dfr'
+## Template file for 'tiny-dfr'
 pkgname=tiny-dfr
-version=0.3.5
+version=0.3.7
 revision=1
 build_style=cargo
 
@@ -14,7 +14,7 @@ maintainer="YOUR NAME <you@example.com>"
 license="MIT, Apache-2.0"
 homepage="https://github.com/AsahiLinux/tiny-dfr"
 distfiles="https://github.com/AsahiLinux/tiny-dfr/archive/refs/tags/v${version}.tar.gz"
-checksum=f612aa7b0186c273fd5b6bbe2f422d40d4626aef33bb753a4f62170e407bd588
+checksum=ec585acd80b7d29e0a7f0bef436e0c6be71883348c7b284f2dfacc4190d8a88a
 
 # GitHub tarballs usually unpack to tiny-dfr-${version}
 wrksrc="tiny-dfr-${version}"
