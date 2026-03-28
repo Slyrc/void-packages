@@ -1,0 +1,23 @@
+# Template file for 'desktop-icons'
+pkgname=desktop-icons
+version=20251004
+revision=1
+build_style=gnu-makefile
+
+hostmakedepends="pkg-config"
+makedepends="gtk+3-devel gtk-layer-shell-devel"
+
+short_desc="Show files from a directory as desktop icons (Wayland layer-shell)"
+maintainer="YOUR NAME <you@example.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/Geronymos/desktop-icons"
+
+commit=b7428f479fcb87c81618185fe75f28429aa566f0
+distfiles="https://github.com/Geronymos/desktop-icons/archive/${commit}.tar.gz"
+checksum=c1bb3fc362408967e1e5b53e87b1dece2069a7aef460e87b64e1a8835439228e
+
+wrksrc="desktop-icons-${commit}"
+
+do_install() {
+	vbin dicons
+}

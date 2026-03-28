@@ -1,0 +1,33 @@
+## Template file for 'tiny-dfr'
+pkgname=tiny-dfr
+version=0.3.7
+revision=1
+build_style=cargo
+
+make_dirs="/var/log/tiny-dfr 0755 root root"
+
+hostmakedepends="cargo rust pkg-config"
+makedepends="cairo-devel fontconfig-devel freetype-devel librsvg-devel libinput-devel eudev-libudev-devel"
+
+short_desc="Minimal dynamic function row daemon (Touch Bar) for Apple Macs"
+maintainer="YOUR NAME <you@example.com>"
+license="MIT, Apache-2.0"
+homepage="https://github.com/AsahiLinux/tiny-dfr"
+distfiles="https://github.com/AsahiLinux/tiny-dfr/archive/refs/tags/v${version}.tar.gz"
+checksum=ec585acd80b7d29e0a7f0bef436e0c6be71883348c7b284f2dfacc4190d8a88a
+
+# GitHub tarballs usually unpack to tiny-dfr-${version}
+wrksrc="tiny-dfr-${version}"
+
+post_install() {
+        vsv tiny-dfr
+
+	# Data files (icons + default config template)
+	vmkdir usr/share/tiny-dfr
+	vcopy share/tiny-dfr/* usr/share/tiny-dfr
+
+	# udev rules (Void/eudev friendly; no systemd triggers)
+	vmkdir usr/lib/udev/rules.d
+	vinstall ${FILESDIR}/99-touchbar-seat.rules 644 usr/lib/udev/rules.d
+	vinstall ${FILESDIR}/99-touchbar-tiny-dfr.rules 644 usr/lib/udev/rules.d
+}
