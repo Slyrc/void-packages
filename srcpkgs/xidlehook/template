@@ -1,0 +1,20 @@
+# Template file for 'xidlehook'
+pkgname=xidlehook
+version=0.10.0.202103
+revision=1
+_commit=5c6cd2fe944898258c17e877b6ea26a84b5070ed
+build_style=cargo
+make_install_args="--path xidlehook-daemon"
+hostmakedepends="pkg-config"
+makedepends="libxcb-devel libXScrnSaver-devel pulseaudio-devel"
+short_desc="General-purpose replacement for xautolock"
+maintainer="slyrs <slyrs@void>"
+license="MIT"
+homepage="https://github.com/jD91mZM2/xidlehook"
+distfiles="https://github.com/jD91mZM2/xidlehook/archive/${_commit}.tar.gz"
+checksum=
+wrksrc="${pkgname}-${_commit}"
+
+post_install() {
+	vlicense LICENSE
+}
